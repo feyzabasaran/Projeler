@@ -28,13 +28,16 @@ public class AnaMenu {
             char secim =scan.next().toUpperCase().charAt(0);
             switch (secim){
                 case '1':{
-
+                    OgrenciMenu ogrMenu = new OgrenciMenu();
+                    ogrMenu.ogrMenu();
                 }
                 case '2':{
-
+                    OgretmenMenu ogrtMenu = new OgretmenMenu();
+                    ogrtMenu.ogretmenMenu();
                 }
                 case 'Q':{
-
+                    System.out.println("Güle Güle");
+                    System.exit(0);
                 }
                 default:{
                     System.out.println("Gecerli deger giriniz");

@@ -1,7 +1,6 @@
 package OkulYonetim;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -52,6 +51,7 @@ public class OgrenciMenu implements IIslemler{
     @Override
     public void ekleme() {
         System.out.println("İsim giriniz: ");
+        scan.nextLine();
         String isim = scan.nextLine();
         System.out.println("Soyisim giriniz: ");
         String soyIsim = scan.nextLine();
@@ -60,7 +60,7 @@ public class OgrenciMenu implements IIslemler{
         System.out.println("Yas giriniz: ");
         int yas = scan.nextInt();
         System.out.println("Sinif giriniz: ");
-        String sinif = scan.nextLine();
+        String sinif = scan.next();
         System.out.println("Ogrenci No giriniz: ");
         int ogrNo = scan.nextInt();
 
@@ -71,15 +71,13 @@ public class OgrenciMenu implements IIslemler{
 
     @Override
     public void arama() {
+
         if (!ogrenciList.isEmpty()){
             System.out.println("Arama yapilacak Tc no giriniz: ");
             String aranacakTc= scan.next();
-            for (Ogrenci each: ogrenciList) {
-                if (each.getTcNo().equals(aranacakTc)){
-                    System.out.println(each.toString());
-                }else {
-                    System.out.println(aranacakTc + " Tc no'ya ait bilgi bulunamadi");
-                    ogrMenu();
+            for (int i = 0; i <ogrenciList.size() ; i++) {
+                if (ogrenciList.get(i).getTcNo().equals(aranacakTc)){
+                    System.out.println(ogrenciList.get(i));
                 }
             }
             ogrMenu();
@@ -107,10 +105,11 @@ public class OgrenciMenu implements IIslemler{
     public void silme() {
         if (!ogrenciList.isEmpty()){
             System.out.println("Silme yapilacak Tc no giriniz: ");
-            String aranacakTc= scan.next();
+            String aranacakTc= scan.nextLine();
             for (int i = 0; i <ogrenciList.size() ; i++) {
                 if (aranacakTc.equals(ogrenciList.get(i).getTcNo())){
                     ogrenciList.remove(i);
+                    System.out.println("Tc nolu ogrenci silindi");
                     ogrMenu();
                 }
 
